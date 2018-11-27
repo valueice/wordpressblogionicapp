@@ -1,0 +1,7 @@
+{
+  "name": "smenetworkapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
