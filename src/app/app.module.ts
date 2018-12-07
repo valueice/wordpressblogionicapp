@@ -10,6 +10,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ApiProvider } from '../providers/api/api';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsPageModule } from '../pages/posts/posts.module';
+import { CategoriesPageModule } from '../pages/categories/categories.module';
+import { DetailPageModule } from '../pages/detail/detail.module';
+import { SearchPageModule } from '../pages/search/search.module';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +28,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    PostsPageModule,
+    CategoriesPageModule,
+    DetailPageModule,
+    SearchPageModule,
+    IonicModule.forRoot(MyApp,{
+      platforms: {
+        ios: {
+          backButtonText: ""
+        }
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +52,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiProvider
   ]
 })
 export class AppModule {}
